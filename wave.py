@@ -14,7 +14,7 @@ class Source:
                        self.pos[1],
                        output_velocity,
                        time,
-                       (2*math.pi / self.res) * i)  # fires wave points
+                       (math.pi / self.res) * i)  # fires wave points
             set_of_points.append(pt)
         return set_of_points
 
