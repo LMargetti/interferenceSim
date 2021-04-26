@@ -30,6 +30,9 @@ class Grid:
                     average_colour[z] = round(average_colour[z], 2)
                 self.grid[x][y] = average_colour
 
-    def emit_colour(self, x, y, sqr_colour):
-        colour = np.array(sqr_colour)
+    def update_pixel(self, x, y, pxl_colour):
+        pass
+
+    def emit_colour(self, x, y, pxl_colour):
+        colour = np.array(pxl_colour)
         self.grid[x][y] = colour
