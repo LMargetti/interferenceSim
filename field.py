@@ -29,8 +29,6 @@ class Grid:
                 for z in range(3):
                     average_colour[z] = round(average_colour[z], 2)
                 self.grid[x][y] = average_colour
-                # if average_colour.sum() != 0:
-                #     print(average_colour)
 
     def emit_colour(self, x, y, sqr_colour):
         colour = np.array(sqr_colour)

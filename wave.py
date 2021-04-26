@@ -17,16 +17,3 @@ class Source:
                        (math.pi / self.res) * i)  # fires wave points
             set_of_points.append(pt)
         return set_of_points
-
-
-class Point:
-    def __init__(self, x, y, v, time, theta):
-        self.pos = [x, y]
-        self.vel = v
-        self.xv = v * math.cos(theta)
-        self.yv = v * math.sin(theta)
-        self.amplitude = math.cos(time)
-
-    def update_pos(self, time_step):
-        self.pos[0] += round(self.xv) * time_step
-        self.pos[1] += round(self.yv) * time_step
