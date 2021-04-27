@@ -1,5 +1,6 @@
 import numpy as np
 import pygame
+import finite_difference
 
 
 class Grid:
@@ -19,19 +20,11 @@ class Grid:
                     rect = pygame.Rect(x_pos, y_pos, self.sqr_size, self.sqr_size)
                     pygame.draw.rect(surface, self.grid[x][y], rect)
 
-    def update_grid(self):
-        previous = self.grid.copy()
-        for x in range(1, self.num_sqrs-1):
-            for y in range(1, self.num_sqrs-1):
-                average_colour = (previous[x-1][y-1] + previous[x][y-1] + previous[x+1][y-1] +
-                                  previous[x-1][y] + previous[x][y] + previous[x+1][y] +
-                                  previous[x-1][y+1] + previous[x][y+1] + previous[x+1][y+1])/9
-                for z in range(3):
-                    average_colour[z] = round(average_colour[z], 2)
-                self.grid[x][y] = average_colour
+    def update_grid(self, c, dt, past_field, force_field=0):
+        finite_difference.approx_field(c, dt, self.sqr_size, self.grid, past_field, force_field)
 
     def update_pixel(self, x, y, pxl_colour):
-        pass
+        self.grid[x][y] = pxl_colour
 
     def emit_colour(self, x, y, pxl_colour):
         colour = np.array(pxl_colour)
